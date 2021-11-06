@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import Menu from './utils/Menu';
+import rutas from './route-config';
 
 function App() {
 
   return (
-    <h1>Hola Mundo!</h1>
+    <>
+      <BrowserRouter>
+            <Menu />
+            <div className="container">
+              <Switch>
+                  {rutas.map(ruta => 
+                        <Route key={ruta.path} path={ruta.path} exact={ruta.exact}> <ruta.componente/> </Route>
+                  )}
+              </Switch>
+            </div>
+      </BrowserRouter>
+    </>
   );
 }
 
