@@ -1,5 +1,15 @@
+import FormulariosGeneros from "./FormularioGeneros";
+
 export default function EditarGenero(){
     return (
-        <>Editar Genero</>
+        <>
+
+        <h3>Editar Genero</h3>
+        
+        <FormulariosGeneros 
+            modelo={{nombre: 'Drama'}} 
+            onSubmit={valores => console.log(valores)} />
+        </>
+        
     )
 }

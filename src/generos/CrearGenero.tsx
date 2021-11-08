@@ -1,12 +1,15 @@
-import { useHistory } from "react-router"
-import Button from "../utils/Button";
+import FormulariosGeneros from "./FormularioGeneros";
 
 export default function CrearGenero(){
-    const history = useHistory();
+  //  const history = useHistory();
     return (
         <>
         <h3>Crear Genero</h3>
-        <Button onClick={() => history.push('/generos')}>Salvar</Button>
+
+        <FormulariosGeneros 
+            modelo={{nombre: ''}} 
+            onSubmit={valores => console.log(valores)} />
+
         </>
     )
 }
