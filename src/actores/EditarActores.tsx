@@ -1,5 +1,13 @@
+import FormulariosActores from "./FormularioActores";
+
 export default function EditarActores(){
     return (
-        <>Editar Actores</>
+        <>     
+          <h3>Editar Actores</h3>
+          <FormulariosActores 
+                modelo={{nombre: 'Tom Holland', 
+                fechaNacimiento: new Date('1996-06-01T00:00:00')}} 
+                onSubmit={valores => console.log(valores)} />
+        </>
     )
 }
