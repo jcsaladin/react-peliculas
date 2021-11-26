@@ -1,7 +1,8 @@
 import { useFormikContext } from "formik";
+import MostrarErrorCampo from "./MostrarErrorCampos";
 
 export default function FormGroupFecha(props:formGroupFechaProps){
-    const {values, validateForm} = useFormikContext<any>();
+    const {values, validateForm, touched, errors} = useFormikContext<any>();
 
     return(
         <div className="form-group">
@@ -9,13 +10,15 @@ export default function FormGroupFecha(props:formGroupFechaProps){
 
             <input type="date" className="form-control" 
                     id={props.campo} name={props.campo}
-                    defaultValue={values[props.campo].toLocateDateString('en-CA')} 
+                    defaultValue={values[props.campo]?.toLocaleDateString()} 
                     onChange={e => {
                         const fecha = new Date(e.currentTarget.value + 'T00:00:00');
                         values[props.campo] = fecha;
+                        validateForm();
                     }}
                     />
-
+    {touched[props.campo] && errors[props.campo] ? 
+    <MostrarErrorCampo mensaje={errors[props.campo]?.toString()!} />: null}
 
         </div>
     )
